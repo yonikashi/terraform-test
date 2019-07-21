@@ -4,7 +4,7 @@
 
 NODENAME = "nodename"
 SUFFIX = "nd37"
-
+aws_region = "us-east-2"
 # To add - Selection of specific AZ's
 
 #########################
