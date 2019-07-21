@@ -4,7 +4,7 @@
 
 NODENAME = "nodename"
 SUFFIX = "nd37"
-aws_region = "$AWS_REGION"
+aws_region = "${AWS_REGION}"
 # To add - Selection of specific AZ's
 
 #########################
