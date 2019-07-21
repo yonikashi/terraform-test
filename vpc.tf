@@ -7,7 +7,7 @@ resource "aws_vpc" "Application-VPC" {
   cidr_block = "${var.app_vpc_cidr}"
   enable_dns_hostnames = true
 
-  tags {
+  tags = {
     Name = "Stellar-Tests-VPC"
   }
 }
@@ -16,7 +16,7 @@ resource "aws_vpc" "Application-VPC" {
 resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.Application-VPC.id}"
 
-  tags {
+  tags = {
     Name = "App-VPC-IGW"
   }
 }
@@ -30,7 +30,7 @@ resource "aws_route_table" "web-public-rt" {
     gateway_id = "${aws_internet_gateway.gw.id}"
   }
 
-  tags {
+  tags = {
     Name = "Fed-Public-RT"
   }
 }
