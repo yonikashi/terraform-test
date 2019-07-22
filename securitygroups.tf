@@ -88,7 +88,7 @@ resource "aws_security_group" "stellar-sg" {
 
   vpc_id="${aws_vpc.Application-VPC.id}"
 
-  tags {
+  tags = {
     Name = "Stellar-SG"
   }
 }

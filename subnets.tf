@@ -8,7 +8,7 @@ resource "aws_subnet" "public-subnet" {
   cidr_block = "${var.public_subnet_cidr}"
   availability_zone = "${var.aws_region}a"
 
-  tags {
+  tags = {
     Name = "App Public Subnet-1"
   }
 }
@@ -20,7 +20,7 @@ resource "aws_subnet" "public-subnet-b" {
   cidr_block = "${var.public_b_subnet_cidr}"
   availability_zone = "${var.aws_region}b"
 
-  tags {
+  tags = {
     Name = "App Public Subnet-2"
   }
 }
@@ -31,7 +31,7 @@ resource "aws_subnet" "private-subnet" {
   cidr_block = "${var.private_subnet_cidr}"
   availability_zone = "${var.aws_region}b"
 
-  tags {
+  tags = {
     Name = "App Private Subnet-1"
   }
 }
@@ -42,7 +42,7 @@ resource "aws_subnet" "private-subnet-b" {
   cidr_block = "${var.private_subnet_b_cidr}"
   availability_zone = "${var.aws_region}a"
 
-  tags {
+  tags = {
     Name = "App Private Subnet-2"
   }
 }

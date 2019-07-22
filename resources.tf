@@ -24,7 +24,7 @@ root_block_device {
     volume_type = "standard"
   }   
 
-  tags {
+  tags = {
     Name = "Stellar-core"
   }
 }
@@ -42,7 +42,7 @@ root_block_device {
 #    volume_type = "standard"
 #  }
 
-#  tags {
+#  tags = {
 #    Name = "Bastion-Host"
 #  }
 #}
