@@ -18,7 +18,7 @@ resource "aws_instance" "stellar" {
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
    source_dest_check = false
-   iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
+   #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
 root_block_device {
     volume_size = "100"
     volume_type = "standard"
@@ -29,35 +29,35 @@ root_block_device {
   }
 }
 
-# Define database inside the private subnet
-resource "aws_instance" "bastion" {
-   ami = "${data.aws_ami.latest-ubuntu.id}"
-   instance_type = "t2.micro"
-   key_name = "${aws_key_pair.default.id}"
-   subnet_id = "${aws_subnet.dmz-subnet.id}"
-   vpc_security_group_ids = ["${aws_security_group.bastion-sg.id}"]
-   source_dest_check = false
-root_block_device {
-    volume_size = "8"
-    volume_type = "standard"
-  }
+# Define bastion inside the private subnet
+#resource "aws_instance" "bastion" {
+#   ami = "${data.aws_ami.latest-ubuntu.id}"
+#   instance_type = "t2.micro"
+#   key_name = "${aws_key_pair.default.id}"
+#   subnet_id = "${aws_subnet.dmz-subnet.id}"
+#   vpc_security_group_ids = ["${aws_security_group.bastion-sg.id}"]
+#   source_dest_check = false
+#root_block_device {
+#    volume_size = "8"
+#    volume_type = "standard"
+#  }
 
-  tags {
-    Name = "Bastion-Host"
-  }
-}
+#  tags {
+#    Name = "Bastion-Host"
+#  }
+#}
 ###################################
 
 ######################
 # Define Stellar NLB #
 ######################
-resource "aws_lb" "stellar-nlb" {
-  name               = "stellar-nlb"
+resource "aws_lb" "node1-nlb" {
+  name               = "node1-nlb"
   internal           = false
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.public-subnet.id}"]
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
     Environment = "production"
@@ -65,19 +65,19 @@ resource "aws_lb" "stellar-nlb" {
 }
 
 resource "aws_lb_listener" "stellar_front_end" {
-  load_balancer_arn = "${aws_lb.stellar-nlb.arn}"
+  load_balancer_arn = "${aws_lb.node1-nlb.arn}"
   port              = "11625"
   protocol          = "TCP"
 
   default_action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.stellar-nlb-tg.arn}"
+    target_group_arn = "${aws_lb_target_group.node1-nlb-tg.arn}"
   }
 }
 
 
-resource "aws_lb_target_group" "stellar-nlb-tg" {
-  name     = "stellar-nlb-tg"
+resource "aws_lb_target_group" "node1-nlb-tg" {
+  name     = "node1-nlb-tg"
   port     = 11625
   protocol = "TCP"
   target_type = "instance"
@@ -85,7 +85,7 @@ resource "aws_lb_target_group" "stellar-nlb-tg" {
 }
 
 resource "aws_lb_target_group_attachment" "attach" {
-  target_group_arn = "${aws_lb_target_group.stellar-nlb-tg.arn}"
+  target_group_arn = "${aws_lb_target_group.node1-nlb-tg.arn}"
   target_id        = "${aws_instance.stellar.id}"
   port             = 11625
 }
