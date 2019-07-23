@@ -9,7 +9,7 @@ resource "aws_subnet" "public-subnet" {
   availability_zone = "${var.aws_region}a"
 
   tags = {
-    Name = "App Public Subnet-1"
+    Name = "Tests-App Public Subnet-1"
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "public-subnet-b" {
   availability_zone = "${var.aws_region}b"
 
   tags = {
-    Name = "App Public Subnet-2"
+    Name = "Tests-App Public Subnet-2"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "private-subnet" {
   availability_zone = "${var.aws_region}b"
 
   tags = {
-    Name = "App Private Subnet-1"
+    Name = "Tests-App Private Subnet-1"
   }
 }
 
@@ -43,6 +43,6 @@ resource "aws_subnet" "private-subnet-b" {
   availability_zone = "${var.aws_region}a"
 
   tags = {
-    Name = "App Private Subnet-2"
+    Name = "Tests-App Private Subnet-2"
   }
 }
