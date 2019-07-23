@@ -48,47 +48,6 @@ resource "aws_key_pair" "default" {
 #}
 ###################################
 
-######################
-# Define Stellar NLB #
-######################
-resource "aws_lb" "node1-nlb" {
-  name               = "node1-nlb"
-  internal           = false
-  load_balancer_type = "network"
-  subnets            = ["${aws_subnet.public-subnet.id}"]
-
-  enable_deletion_protection = false
-
-  tags = {
-    Environment = "production"
-  }
-}
-
-resource "aws_lb_listener" "stellar_front_end" {
-  load_balancer_arn = "${aws_lb.node1-nlb.arn}"
-  port              = "11625"
-  protocol          = "TCP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = "${aws_lb_target_group.node1-nlb-tg.arn}"
-  }
-}
-
-
-resource "aws_lb_target_group" "node1-nlb-tg" {
-  name     = "node1-nlb-tg"
-  port     = 11625
-  protocol = "TCP"
-  target_type = "instance"
-  vpc_id   = "${aws_vpc.Application-VPC.id}"
-}
-
-resource "aws_lb_target_group_attachment" "attach" {
-  target_group_arn = "${aws_lb_target_group.node1-nlb-tg.arn}"
-  target_id        = "${aws_instance.test-core-1.id}"
-  port             = 11625
-}
 
 ###################################
 # Define NAT gateway to Private Subnet
