@@ -1,4 +1,3 @@
-
 ##################
 # EC2 Instances ##
 ##################
@@ -12,7 +11,7 @@ resource "aws_instance" "test-core-1" {
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
    source_dest_check = false
-   iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
+   #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
 root_block_device {
     volume_size = "8"
     volume_type = "standard"
@@ -32,7 +31,7 @@ resource "aws_instance" "test-core-2" {
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
    source_dest_check = false
-   iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
+   #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
 root_block_device {
     volume_size = "8"
     volume_type = "standard"
