@@ -11,7 +11,7 @@ resource "aws_instance" "test-load-client-1" {
    source_dest_check = false
    #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
 root_block_device {
-    volume_size = "25"
+    volume_size = "35"
     volume_type = "standard"
   }
 
