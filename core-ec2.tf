@@ -17,7 +17,7 @@ root_block_device {
     volume_type = "standard"
   }
 
-  tags {
+  tags = {
     Name = "test-core-1"
   }
 }
@@ -37,7 +37,7 @@ root_block_device {
     volume_type = "standard"
   }
 
-  tags {
+  tags = {
     Name = "test-core-2"
   }
 }
