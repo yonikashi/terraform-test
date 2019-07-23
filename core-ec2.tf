@@ -1,3 +1,63 @@
+###################################
+# EC2 stellar-load-testing client #
+##################################
+resource "aws_instance" "test-load-client-1" {
+   ami = "ami-0ebbab6be7ad25d13"
+   instance_type = "t3.medium"
+   key_name = "${aws_key_pair.default.id}"
+   subnet_id = "${aws_subnet.private-subnet.id}"
+   vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
+   associate_public_ip_address = false
+   source_dest_check = false
+   #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
+root_block_device {
+    volume_size = "25"
+    volume_type = "standard"
+  }
+
+  tags = {
+    Name = "test-load-client-1"
+  }
+}
+
+
+##################
+# EC2 Horizon  ##
+#################
+resource "aws_instance" "test-horizon-1" {
+   ami = "ami-001b5564491bcd087"
+   instance_type = "c5.large"
+   key_name = "${aws_key_pair.default.id}"
+   user_data = <<-EOF
+   #!/usr/bin/env bash
+   sudo rm -rf /data/postgresql
+   sudo rm -rf /data/horizon-volumes
+   sudo docker-compose -f /data/docker-compose.yml down
+   sudo docker-compose -f /data/docker-compose.yml up -d horizon-db
+   sleep 14
+   sudo docker-compose -f /data/docker-compose.yml run --rm horizon db init
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml up -d
+   EOF
+   subnet_id = "${aws_subnet.private-subnet.id}"
+   vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
+   associate_public_ip_address = false
+   source_dest_check = false
+   #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
+root_block_device {
+    volume_size = "50"
+    volume_type = "standard"
+  }
+
+  tags = {
+    Name = "test-horizon-1"
+  }
+}
+
+
+
+
+
 ##################
 # EC2 Instances ##
 ##################
