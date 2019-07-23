@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "primary" {
-  name = "kin.perftest"
+  name = "test.kin"
 
   vpc {
     vpc_id = "${aws_vpc.Application-VPC.id}"
