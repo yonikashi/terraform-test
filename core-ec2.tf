@@ -7,6 +7,20 @@ resource "aws_instance" "test-core-1" {
    ami = "ami-0f0640cb26740d676"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
+   user_data = << EOF
+   #!/usr/bin/env bash
+   sudo rm -rf /data/postgresql
+   sudo rm -rf /data/stellar-core/buckets
+   sudo docker-compose -f /data/docker-compose.yml up -d stellar-core-db
+   sleep 14
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newdb
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --forcescp
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newhist local
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml up -d
+   EOF
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
@@ -27,6 +41,20 @@ resource "aws_instance" "test-core-2" {
    ami = "ami-0329dc5c2d5aaac82"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
+   user_data = << EOF
+   #!/usr/bin/env bash
+   sudo rm -rf /data/postgresql
+   sudo rm -rf /data/stellar-core/buckets
+   sudo docker-compose -f /data/docker-compose.yml up -d stellar-core-db
+   sleep 14
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newdb
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --forcescp
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newhist$
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml up -d
+   EOF
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
@@ -46,6 +74,20 @@ resource "aws_instance" "test-core-3" {
    ami = "ami-05641141dae12d64c"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
+   user_data = << EOF
+   #!/usr/bin/env bash
+   sudo rm -rf /data/postgresql
+   sudo rm -rf /data/stellar-core/buckets
+   sudo docker-compose -f /data/docker-compose.yml up -d stellar-core-db
+   sleep 14
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newdb
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --forcescp
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newhist$
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml up -d
+   EOF
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
@@ -65,6 +107,20 @@ resource "aws_instance" "test-core-4" {
    ami = "ami-065fd893330a3dc38"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
+   user_data = << EOF
+   #!/usr/bin/env bash
+   sudo rm -rf /data/postgresql
+   sudo rm -rf /data/stellar-core/buckets
+   sudo docker-compose -f /data/docker-compose.yml up -d stellar-core-db
+   sleep 14
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newdb
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --forcescp
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newhist$
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml up -d
+   EOF
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
@@ -84,6 +140,20 @@ resource "aws_instance" "test-core-5" {
    ami = "ami-0317bdf017d952886"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
+   user_data = << EOF
+   #!/usr/bin/env bash
+   sudo rm -rf /data/postgresql
+   sudo rm -rf /data/stellar-core/buckets
+   sudo docker-compose -f /data/docker-compose.yml up -d stellar-core-db
+   sleep 14
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newdb
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --forcescp
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml run --rm stellar-core --newhist$
+   sleep 2
+   sudo docker-compose -f /data/docker-compose.yml up -d
+   EOF
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
    associate_public_ip_address = false
