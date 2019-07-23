@@ -17,7 +17,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.Application-VPC.id}"
 
   tags = {
-    Name = "App-VPC-IGW"
+    Name = "Stellar-Tests-IGW"
   }
 }
 

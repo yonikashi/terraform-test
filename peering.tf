@@ -8,7 +8,7 @@ resource "aws_vpc_peering_connection" "jenkinstocore" {
   auto_accept   = true
 
   tags = {
-    Name = "VPC Peering between DMZ and Fed"
+    Name = "VPC Peering between Managment-Vpc and Testing-Vpc"
   }
 }
 
