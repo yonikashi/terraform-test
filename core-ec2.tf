@@ -176,7 +176,7 @@ resource "aws_lb" "node1-nlb" {
   name               = "node1-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = ["${aws_subnet.public-subnet.id}"]
+  subnets            = ["${aws_subnet.private-subnet.id}"]
 
   enable_deletion_protection = false
 
@@ -217,7 +217,7 @@ resource "aws_lb" "node2-nlb" {
   name               = "node2-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = ["${aws_subnet.public-subnet.id}"]
+  subnets            = ["${aws_subnet.private-subnet.id}"]
 
   enable_deletion_protection = false
 
@@ -258,7 +258,7 @@ resource "aws_lb" "node3-nlb" {
   name               = "node3-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = ["${aws_subnet.public-subnet.id}"]
+  subnets            = ["${aws_subnet.private-subnet.id}"]
 
   enable_deletion_protection = false
 
@@ -299,7 +299,7 @@ resource "aws_lb" "node4-nlb" {
   name               = "node4-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = ["${aws_subnet.public-subnet.id}"]
+  subnets            = ["${aws_subnet.private-subnet.id}"]
 
   enable_deletion_protection = false
 
@@ -341,7 +341,7 @@ resource "aws_lb" "node5-nlb" {
   name               = "node5-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = ["${aws_subnet.public-subnet.id}"]
+  subnets            = ["${aws_subnet.private-subnet.id}"]
 
   enable_deletion_protection = false
 
