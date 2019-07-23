@@ -234,7 +234,7 @@ root_block_device {
 ###########################
 resource "aws_lb" "node1-nlb" {
   name               = "node1-nlb"
-  internal           = false
+  internal           = true
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.private-subnet.id}"]
 
@@ -275,7 +275,7 @@ resource "aws_lb_target_group_attachment" "attach1" {
 ######################
 resource "aws_lb" "node2-nlb" {
   name               = "node2-nlb"
-  internal           = false
+  internal           = true
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.private-subnet.id}"]
 
@@ -316,7 +316,7 @@ resource "aws_lb_target_group_attachment" "attach2" {
 ########################
 resource "aws_lb" "node3-nlb" {
   name               = "node3-nlb"
-  internal           = false
+  internal           = true
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.private-subnet.id}"]
 
@@ -357,7 +357,7 @@ resource "aws_lb_target_group_attachment" "attach3" {
 ######################
 resource "aws_lb" "node4-nlb" {
   name               = "node4-nlb"
-  internal           = false
+  internal           = true
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.private-subnet.id}"]
 
@@ -399,7 +399,7 @@ resource "aws_lb_target_group_attachment" "attach4" {
 ######################
 resource "aws_lb" "node5-nlb" {
   name               = "node5-nlb"
-  internal           = false
+  internal           = true
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.private-subnet.id}"]
 

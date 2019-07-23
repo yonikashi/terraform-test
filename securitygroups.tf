@@ -77,6 +77,14 @@ resource "aws_security_group" "stellar-sg" {
   }
 
   egress {
+    from_port = 11626
+    to_port = 11626
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Stelar Horizon P2P"
+  }
+
+  egress {
     from_port = 22
     to_port = 22
     protocol = "tcp"
