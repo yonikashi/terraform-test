@@ -5,7 +5,7 @@
 
 resource "aws_instance" "test-core-1" {
    ami = "ami-0f0640cb26740d676"
-   instance_type = "t3.medium"
+   instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
@@ -25,7 +25,7 @@ root_block_device {
 
 resource "aws_instance" "test-core-2" {
    ami = "ami-0329dc5c2d5aaac82"
-   instance_type = "t3.medium"
+   instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
@@ -44,7 +44,7 @@ root_block_device {
 
 resource "aws_instance" "test-core-3" {
    ami = "ami-05641141dae12d64c"
-   instance_type = "t3.medium"
+   instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
@@ -63,7 +63,7 @@ root_block_device {
 
 resource "aws_instance" "test-core-4" {
    ami = "ami-065fd893330a3dc38"
-   instance_type = "t3.medium"
+   instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
@@ -76,13 +76,13 @@ root_block_device {
   }
 
   tags = {
-    Name = "test-core-2"
+    Name = "test-core-4"
   }
 }
 
 resource "aws_instance" "test-core-5" {
    ami = "ami-0317bdf017d952886"
-   instance_type = "t3.medium"
+   instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    subnet_id = "${aws_subnet.private-subnet.id}"
    vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
@@ -95,7 +95,7 @@ root_block_device {
   }
 
   tags = {
-    Name = "test-core-2"
+    Name = "test-core-5"
   }
 }
 

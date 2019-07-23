@@ -13,7 +13,7 @@ resource "aws_route53_zone" "primary" {
 
 resource "aws_route53_record" "test-core-1" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "test-core-1"
+  name    = "core-test-1"
   type    = "A"
   ttl     = "300"
   records = ["${aws_instance.test-core-1.private_ip}"]
@@ -21,7 +21,7 @@ resource "aws_route53_record" "test-core-1" {
 
 resource "aws_route53_record" "test-core-2" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "test-core-2"
+  name    = "core-test-2"
   type    = "A"
   ttl     = "300"
   records = ["${aws_instance.test-core-2.private_ip}"]
@@ -29,7 +29,7 @@ resource "aws_route53_record" "test-core-2" {
 
 resource "aws_route53_record" "test-core-3" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "test-core-3"
+  name    = "core-test-3"
   type    = "A"
   ttl     = "300"
   records = ["${aws_instance.test-core-3.private_ip}"]
@@ -37,7 +37,7 @@ resource "aws_route53_record" "test-core-3" {
 
 resource "aws_route53_record" "test-core-4" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "test-core-4"
+  name    = "core-test-4"
   type    = "A"
   ttl     = "300"
   records = ["${aws_instance.test-core-4.private_ip}"]
@@ -45,7 +45,7 @@ resource "aws_route53_record" "test-core-4" {
 
 resource "aws_route53_record" "test-core-5" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "test-core-5"
+  name    = "core-test-5"
   type    = "A"
   ttl     = "300"
   records = ["${aws_instance.test-core-5.private_ip}"]
