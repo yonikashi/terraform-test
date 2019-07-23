@@ -58,7 +58,7 @@ resource "aws_route_table" "web-private-rt" {
     gateway_id = "${aws_vpc_peering_connection.jenkinstocore.id}"
   }
 
-  tags {
+  tags = {
     Name = "Fed-Private-RT"
   }
 }
