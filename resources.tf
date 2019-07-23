@@ -10,24 +10,24 @@ resource "aws_key_pair" "default" {
 ##################
 # Define stellar inside the private subnet
 
-resource "aws_instance" "stellar" {
-   ami = "${data.aws_ami.latest-ubuntu.id}"
-   instance_type = "t3.medium"
-   key_name = "${aws_key_pair.default.id}"
-   subnet_id = "${aws_subnet.private-subnet.id}"
-   vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
-   associate_public_ip_address = false
-   source_dest_check = false
+#resource "aws_instance" "stellar" {
+#   ami = "${data.aws_ami.latest-ubuntu.id}"
+#   instance_type = "t3.medium"
+#   key_name = "${aws_key_pair.default.id}"
+#   subnet_id = "${aws_subnet.private-subnet.id}"
+#   vpc_security_group_ids = ["${aws_security_group.stellar-sg.id}"]
+#   associate_public_ip_address = false
+#   source_dest_check = false
    #iam_instance_profile = "${aws_iam_instance_profile.stellar_profile.name}"
-root_block_device {
-    volume_size = "100"
-    volume_type = "standard"
-  }   
+#root_block_device {
+#    volume_size = "100"
+#    volume_type = "standard"
+#  }   
 
-  tags = {
-    Name = "Stellar-core"
-  }
-}
+#  tags = {
+#    Name = "Stellar-core"
+#  }
+#}
 
 # Define bastion inside the private subnet
 #resource "aws_instance" "bastion" {
@@ -86,7 +86,7 @@ resource "aws_lb_target_group" "node1-nlb-tg" {
 
 resource "aws_lb_target_group_attachment" "attach" {
   target_group_arn = "${aws_lb_target_group.node1-nlb-tg.arn}"
-  target_id        = "${aws_instance.stellar.id}"
+  target_id        = "${aws_instance.test-core-1.id}"
   port             = 11625
 }
 
