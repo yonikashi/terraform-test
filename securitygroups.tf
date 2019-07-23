@@ -8,7 +8,7 @@ resource "aws_security_group" "stellar-sg" {
 
   ingress {
     from_port = 11625
-    to_port = 11625
+    to_port = 11626
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
