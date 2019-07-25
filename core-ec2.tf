@@ -263,7 +263,7 @@ root_block_device {
   tags = {
     Name = "test-watcher-core-1"
   }
-
+}
 
 
 
