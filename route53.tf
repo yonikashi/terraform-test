@@ -64,6 +64,7 @@ resource "aws_route53_record" "test-core-1" {
  alias {
     name                   = "${aws_lb.node1-nlb.dns_name}"
     zone_id                = "${aws_lb.node1-nlb.zone_id}"
+    evaluate_target_health = false
   }
 }
 
@@ -74,6 +75,7 @@ resource "aws_route53_record" "test-core-2" {
   alias {
     name                   = "${aws_lb.node2-nlb.dns_name}"
     zone_id                = "${aws_lb.node2-nlb.zone_id}"
+    evaluate_target_health = false
   }
 }
 
@@ -84,6 +86,7 @@ resource "aws_route53_record" "test-core-3" {
  alias {
     name                   = "${aws_lb.node3-nlb.dns_name}"
     zone_id                = "${aws_lb.node3-nlb.zone_id}"
+    evaluate_target_health = false
   }
 }
 
@@ -94,6 +97,7 @@ resource "aws_route53_record" "test-core-4" {
  alias {
     name                   = "${aws_lb.node4-nlb.dns_name}"
     zone_id                = "${aws_lb.node4-nlb.zone_id}"
+    evaluate_target_health = false
   }
 }
 
@@ -104,5 +108,6 @@ resource "aws_route53_record" "test-core-5" {
  alias {
     name                   = "${aws_lb.node5-nlb.dns_name}"
     zone_id                = "${aws_lb.node5-nlb.zone_id}"
+    evaluate_target_health = false
   }
 }
