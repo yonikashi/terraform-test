@@ -31,7 +31,7 @@ resource "aws_route_table" "peering-mgmt-to-tests" {
     cidr_block = "172.31.0.0/16"
     gateway_id = "${aws_vpc_peering_connection.jenkinstocore.id}"
   }
-
+}
 
 # Define the public route table
 resource "aws_route_table" "web-public-rt" {
