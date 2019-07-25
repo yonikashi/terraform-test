@@ -14,6 +14,13 @@ resource "aws_security_group" "stellar-sg" {
   }
 
   ingress {
+    from_port = 9274
+    to_port = 9275
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port = 11625
     to_port = 11626
     protocol = "tcp"
@@ -88,12 +95,21 @@ resource "aws_security_group" "stellar-sg" {
     to_port = 9275
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-    description = "Stelar Horizon P2P"
+    description = "Prometheus in"
   }
 
   egress {
     from_port = 22
     to_port = 22
+    protocol = "tcp"
+    #cidr_blocks = ["0.0.0.0/0"]
+    #security_groups = ["${aws_security_group.bastion-sg.id}"]
+    description = "ssh connection Bastion"
+  }
+
+  egress {
+    from_port = 9090
+    to_port = 9090
     protocol = "tcp"
     #cidr_blocks = ["0.0.0.0/0"]
     #security_groups = ["${aws_security_group.bastion-sg.id}"]

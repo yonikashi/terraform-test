@@ -61,6 +61,17 @@ resource "aws_route53_record" "ip-test-core-5" {
 
 
 
+resource "aws_route53_record" "prometheus-record" {
+  zone_id = "${aws_route53_zone.primary.zone_id}"
+  name    = "prometheus"
+  type    = "A"
+ alias {
+    name                   = "${aws_lb.prometheus-nlb.dns_name}"
+    zone_id                = "${aws_lb.prometheus-nlb.zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 
 #resource "aws_lb" "node1-nlb" 
 
