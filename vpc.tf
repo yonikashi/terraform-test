@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "gw" {
 
 # Connects Managment route table to Peering of Tests-VPC
 # Define the public route table
-resource "aws_route_tables" "peering-mgmt-to-tests" {
+resource "aws_route" "peering-mgmt-to-tests" {
   vpc_id = "vpc-080d4cf2e782cf760"
 
   route {
