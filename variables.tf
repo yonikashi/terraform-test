@@ -108,3 +108,9 @@ variable "test_load_client_ami" {
   description = "Load Test AMI"
   default = "ami-0ebbab6be7ad25d13"
 }
+
+variable "test_watcher_core_1_ami" {
+  description = "Load Test AMI"
+  default = "ami-02c2f76f02cbc4d52"
+}
+
