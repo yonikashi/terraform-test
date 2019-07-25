@@ -25,9 +25,9 @@ resource "aws_internet_gateway" "gw" {
 # Define the public route table
 resource "aws_route" "peering-mgmt-to-tests" {
   vpc_id = "vpc-080d4cf2e782cf760"
+  route_table_id = "rtb-0e0cadd5d7d99912c"
 
   route {
-    route_table_id = "rtb-0e0cadd5d7d99912c"
     cidr_block = "172.31.0.0/16"
     gateway_id = "${aws_vpc_peering_connection.jenkinstocore.id}"
   }
