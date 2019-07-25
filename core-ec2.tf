@@ -518,7 +518,7 @@ resource "aws_lb" "prometheus-nlb" {
 resource "aws_lb_listener" "prometheus_front_end" {
   load_balancer_arn = "${aws_lb.prometheus-nlb.arn}"
   port              = "9090"
-  protocol          = "TCP"
+  protocol          = "HTTP"
 
   default_action {
     type             = "forward"
