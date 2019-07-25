@@ -16,13 +16,10 @@ root_block_device {
   }
 
   tags = {
-    Name = "test-load-client-1"
+    Name = "Promehteus-Server"
   }
 }
-
-
-
-
+############################
 
 
 ###################################
@@ -501,3 +498,45 @@ resource "aws_lb_target_group_attachment" "attach5" {
   port             = 11625
 }
 
+
+#########################
+# Define Prometheus NLB #
+#########################
+resource "aws_lb" "prometheus-nlb" {
+  name               = "prometheus-nlb"
+  internal           = true
+  load_balancer_type = "network"
+  subnets            = ["${aws_subnet.private-subnet.id}"]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+resource "aws_lb_listener" "prometheus_front_end" {
+  load_balancer_arn = "${aws_lb.prometheus-nlb.arn}"
+  port              = "9090"
+  protocol          = "TCP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = "${aws_lb_target_group.prometheus-nlb-tg.arn}"
+  }
+}
+
+
+resource "aws_lb_target_group" "prometheus-nlb-tg" {
+  name     = "prometheus-nlb-tg"
+  port     = 9090
+  protocol = "TCP"
+  target_type = "instance"
+  vpc_id   = "${aws_vpc.Application-VPC.id}"
+}
+
+resource "aws_lb_target_group_attachment" "prometheus-attach" {
+  target_group_arn = "${aws_lb_target_group.prometheus-nlb-tg.arn}"
+  target_id        = "${aws_instance.prometheus_server.id}"
+  port             = 9090
+}
