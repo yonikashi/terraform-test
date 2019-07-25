@@ -505,7 +505,7 @@ resource "aws_lb_target_group_attachment" "attach5" {
 resource "aws_lb" "prometheus-nlb" {
   name               = "prometheus-nlb"
   internal           = false
-  load_balancer_type = "network"
+  load_balancer_type = "application"
   subnets            = ["${aws_subnet.public-subnet.id}", "${aws_subnet.public-subnet-b.id}"]
   security_groups    = ["${aws_security_group.stellar-sg.id}"]
   enable_deletion_protection = false
