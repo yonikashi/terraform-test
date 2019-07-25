@@ -504,7 +504,7 @@ resource "aws_lb_target_group_attachment" "attach5" {
 #########################
 resource "aws_lb" "prometheus-nlb" {
   name               = "prometheus-nlb"
-  internal           = true
+  internal           = false
   load_balancer_type = "network"
   subnets            = ["${aws_subnet.private-subnet.id}"]
 

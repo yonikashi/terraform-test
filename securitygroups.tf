@@ -7,6 +7,13 @@ resource "aws_security_group" "stellar-sg" {
   description = "Allow incoming HTTP connections & SSH access"
 
   ingress {
+    from_port = 9090
+    to_port = 9090
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port = 11625
     to_port = 11626
     protocol = "tcp"
@@ -70,15 +77,15 @@ resource "aws_security_group" "stellar-sg" {
 
   egress {
     from_port = 11625
-    to_port = 11625
+    to_port = 11626
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Stelar Core P2P"
   }
 
   egress {
-    from_port = 11626
-    to_port = 11626
+    from_port = 9274
+    to_port = 9275
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Stelar Horizon P2P"
