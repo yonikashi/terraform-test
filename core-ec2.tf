@@ -2,7 +2,7 @@
 # EC2 stellar-load-testing client #
 ##################################
 resource "aws_instance" "test-load-client-1" {
-   ami = "ami-0ebbab6be7ad25d13"
+   ami = "${var.test_load_client_ami}"
    instance_type = "t3.medium"
    key_name = "${aws_key_pair.default.id}"
    subnet_id = "${aws_subnet.private-subnet.id}"
@@ -25,7 +25,7 @@ root_block_device {
 # EC2 Horizon  ##
 #################
 resource "aws_instance" "test-horizon-1" {
-   ami = "ami-001b5564491bcd087"
+   ami = "${var.horizon_1_ami}"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    user_data = <<-EOF
@@ -64,7 +64,7 @@ root_block_device {
 # Define stellar inside the private subnet
 
 resource "aws_instance" "test-core-1" {
-   ami = "ami-0f0640cb26740d676"
+   ami = "${var.test_core_1_ami}"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    user_data = <<-EOF
@@ -98,7 +98,7 @@ root_block_device {
 
 
 resource "aws_instance" "test-core-2" {
-   ami = "ami-0329dc5c2d5aaac82"
+   ami = "${var.test_core_2_ami}"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    user_data = <<-EOF
@@ -131,7 +131,7 @@ root_block_device {
 }
 
 resource "aws_instance" "test-core-3" {
-   ami = "ami-05641141dae12d64c"
+   ami = "${var.test_core_3_ami}"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    user_data = <<-EOF
@@ -164,7 +164,7 @@ root_block_device {
 }
 
 resource "aws_instance" "test-core-4" {
-   ami = "ami-065fd893330a3dc38"
+   ami = "${var.test_core_4_ami}"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    user_data = <<-EOF
@@ -197,7 +197,7 @@ root_block_device {
 }
 
 resource "aws_instance" "test-core-5" {
-   ami = "ami-0317bdf017d952886"
+   ami = "${var.test_core_1_ami}"
    instance_type = "c5.large"
    key_name = "${aws_key_pair.default.id}"
    user_data = <<-EOF

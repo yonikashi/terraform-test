@@ -68,3 +68,43 @@ variable "ami" {
   description = "Amazon Linux AMI"
   default = "ami-0d8f6eb4f641ef691"
 }
+
+
+###################
+#  Default AMI's  #
+###################
+
+variable "test_core_1_ami" {
+  description = "Default Node-1 AMI"
+  default = "ami-0f0640cb26740d676"
+}
+
+variable "test_core_2_ami" {
+  description = "Default Node-2 AMI"
+  default = "ami-0329dc5c2d5aaac82"
+}
+
+variable "test_core_3_ami" {
+  description = "Default Node-3 AMI"
+  default = "ami-05641141dae12d64c"
+}
+
+variable "test_core_4_ami" {
+  description = "Default Node-4 AMI"
+  default = "ami-065fd893330a3dc38"
+}
+
+variable "test_core_5_ami" {
+  description = "Default Node-5 AMI"
+  default = "ami-0317bdf017d952886"
+}
+
+variable "horizon_1_ami" {
+  description = "Default Horizon-1 AMI"
+  default = "ami-001b5564491bcd087"
+}
+
+variable "test_load_client_ami" {
+  description = "Load Test AMI"
+  default = "ami-0ebbab6be7ad25d13"
+}
