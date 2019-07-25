@@ -74,6 +74,11 @@ variable "ami" {
 #  Default AMI's  #
 ###################
 
+variable "prometheus" {
+  description = "Default Prometheus AMI"
+  default = "ami-0b3cd5acb9089e468"
+}
+
 variable "test_core_1_ami" {
   description = "Default Node-1 AMI"
   default = "ami-0f0640cb26740d676"
