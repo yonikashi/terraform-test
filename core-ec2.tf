@@ -500,10 +500,10 @@ resource "aws_lb_target_group_attachment" "attach5" {
 
 
 #########################
-# Define Prometheus NLB #
+# Define Prometheus ALB #
 #########################
 resource "aws_lb" "prometheus-nlb" {
-  name               = "prometheus-nlb"
+  name               = "prometheus-alb"
   internal           = false
   load_balancer_type = "application"
   subnets            = ["${aws_subnet.public-subnet.id}", "${aws_subnet.public-subnet-b.id}"]
@@ -528,9 +528,9 @@ resource "aws_lb_listener" "prometheus_front_end" {
 
 
 resource "aws_lb_target_group" "prometheus-nlb-tg" {
-  name     = "prometheus-nlb-tg"
+  name     = "prometheus-alb-tg"
   port     = 9090
-  protocol = "TCP"
+  protocol = "HTTP"
   target_type = "instance"
   vpc_id   = "${aws_vpc.Application-VPC.id}"
 }
