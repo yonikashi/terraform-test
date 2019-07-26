@@ -1,4 +1,4 @@
-#########################
+\#########################
 # Variables to override #
 #########################
 
@@ -76,7 +76,7 @@ variable "ami" {
 
 variable "prometheus" {
   description = "Default Prometheus AMI"
-  default = "ami-0260bc36a20505c35"
+  default = "ami-0096cd1e99da3dfb9"
 }
 
 variable "test_core_1_ami" {
@@ -106,7 +106,7 @@ variable "test_core_5_ami" {
 
 variable "horizon_1_ami" {
   description = "Default Horizon-1 AMI"
-  default = "ami-02cd4ad493bbcc441"
+  default = "ami-0752ca2cd8405d12e"
 }
 
 variable "test_load_client_ami" {
@@ -116,6 +116,6 @@ variable "test_load_client_ami" {
 
 variable "test_watcher_core_1_ami" {
   description = "Load Test AMI"
-  default = "ami-0023e946265a2f4d5"
+  default = "ami-08755ca1546ebe1e7"
 }
 

@@ -10,6 +10,6 @@ output "aws_test_client_ip" {
 
 
 output "aws_prom_dns" {
-  value = "${aws_alb.prometheus-nlb.public_dns}"
+  value = "${aws_lb.prometheus-nlb.public_dns}"
   description = "The address of Prometheus NLB"
 }

@@ -19,6 +19,14 @@ resource "aws_route53_record" "ip-watcher-test-1" {
   records = ["${aws_instance.test-watcher-core-1.private_ip}"]
 }
 
+resource "aws_route53_record" "ip-horizon-test-1" {
+  zone_id = "${aws_route53_zone.primary.zone_id}"
+  name    = "ip-horizon-test-1"
+  type    = "A"
+  ttl     = "300"
+  records = ["${aws_instance.test-horizon-1.private_ip}"]
+}
+
 resource "aws_route53_record" "ip-test-core-1" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
   name    = "ip-core-test-1"
