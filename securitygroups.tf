@@ -111,9 +111,9 @@ resource "aws_security_group" "stellar-sg" {
     from_port = 9090
     to_port = 9090
     protocol = "tcp"
-    #cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
     #security_groups = ["${aws_security_group.bastion-sg.id}"]
-    description = "ssh connection Bastion"
+    #description = "ssh connection Bastion"
   }
 
 
